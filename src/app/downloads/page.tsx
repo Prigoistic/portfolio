@@ -150,7 +150,7 @@ export default function DownloadsPage() {
           <div className={styles.contactSection}>
             <h2 className={styles.sectionTitle} style={interFontStyle}>Need Something Specific?</h2>
             <p className={styles.description} style={interFontStyle}>
-              If you're looking for additional resources or have specific requirements, please don't hesitate to reach out.
+              If you&apos;re looking for additional resources or have specific requirements, please don&apos;t hesitate to reach out.
             </p>
             <Link 
               href="/contact" 
