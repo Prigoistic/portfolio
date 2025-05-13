@@ -145,7 +145,7 @@ export default function Home() {
             </div>
           </TransitionLink>
           
-          <TransitionLink href="/builder" className="grid-area-designer">
+          <TransitionLink href="/builder" className="grid-area-builder">
             <div className="grid-card" ref={refs[2]}>
               <h2>Builder&apos;s index</h2>
             </div>
