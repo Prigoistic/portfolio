@@ -1,0 +1,296 @@
+/* Contact Page Styles */
+.container {
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
+  transition: opacity 0.3s ease;
+  padding: 1rem;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  position: relative;
+}
+
+.container * {
+  font-family: inherit;
+}
+
+.container main {
+  max-width: 90%;
+}
+
+.header {
+  font-size: 0.75rem;
+  font-weight: normal;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* Improved typewriter effect that works with multiple lines */
+@keyframes typing {
+  from { max-width: 0 }
+  to { max-width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.typewriter {
+  overflow: hidden;
+  display: inline-block;
+  max-width: 0;
+  animation: 
+    typing 3.5s steps(90, end) forwards,
+    blink 1s step-end infinite;
+  white-space: normal;
+  border-right: 3px solid white;
+}
+
+/* Fix title styling */
+.title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+  max-width: 70%;
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.socialLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* Floating animations for the social links container */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.socialContainer {
+  position: absolute;
+  bottom: 5rem;
+  right: 1rem;
+  text-align: right;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Social link hover transitions with neon effect */
+.socialLink {
+  font-size: 1.75rem;
+  line-height: 1.4;
+  font-weight: normal;
+  font-family: var(--font-inter), sans-serif;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  display: inline-block;
+  position: relative;
+  color: white;
+}
+
+.socialLink:hover {
+  transform: translateX(8px) scale(1.05);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 
+               0 0 20px rgba(255, 255, 255, 0.5), 
+               0 0 30px rgba(255, 255, 255, 0.3);
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.socialLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.socialLink:hover::after {
+  width: 100%;
+}
+
+.footer {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Crazy rainbow effect for footer email */
+@keyframes rainbow {
+  0% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.7); }
+  14% { text-shadow: 0 0 10px rgba(255, 127, 0, 0.7); }
+  28% { text-shadow: 0 0 10px rgba(255, 255, 0, 0.7); }
+  42% { text-shadow: 0 0 10px rgba(0, 255, 0, 0.7); }
+  57% { text-shadow: 0 0 10px rgba(0, 0, 255, 0.7); }
+  71% { text-shadow: 0 0 10px rgba(75, 0, 130, 0.7); }
+  85% { text-shadow: 0 0 10px rgba(148, 0, 211, 0.7); }
+  100% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.7); }
+}
+
+.footerEmail {
+  font-size: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  display: inline-block;
+}
+
+.footerEmail:hover {
+  transform: translateY(-4px) scale(1.1);
+  animation: rainbow 2s linear infinite;
+  letter-spacing: 0.5px;
+}
+
+.footerEmail::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.footerEmail:hover::after {
+  width: 100%;
+}
+
+/* Glitch animation for social label */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.socialLabel {
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+  position: relative;
+}
+
+.socialLabel:hover {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
+.footerCredit {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+/* Fade in animation */
+.fadeIn {
+  opacity: 1;
+  animation: fadeInAnimation 0.3s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+    max-width: 100%;
+  }
+  
+  .socialLink {
+    font-size: 1.5rem;
+  }
+  
+  .socialContainer {
+    position: static;
+    margin-top: 3rem;
+    text-align: left;
+  }
+  
+  .socialLinks {
+    align-items: flex-start;
+  }
+  
+  .typewriter {
+    display: block;
+    white-space: pre-wrap;
+    word-break: break-word;
+    animation: 
+      typing 3.5s steps(40, end) forwards,
+      blink 1s step-end infinite;
+  }
+}
+
+.container main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+/* Shake effect for header text */
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+.header:hover {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.contactInfo {
+  margin-top: 0;
+}
+
+.contactEmail {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.contactPhone {
+  font-size: 1rem;
+  margin: 0;
+} 

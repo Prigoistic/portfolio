@@ -1,0 +1,236 @@
+/* Downloads Page Styles */
+.container {
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
+  transition: opacity 0.3s ease;
+  padding: 1rem;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  position: relative;
+}
+
+.container * {
+  font-family: inherit;
+}
+
+.header {
+  font-size: 0.75rem;
+  font-weight: normal;
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.backLink {
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.backLink:hover {
+  transform: translateX(-4px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Improved typewriter effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: white; }
+}
+
+.typewriter {
+  overflow: hidden;
+  display: inline-block;
+  width: 0;
+  border-right: 3px solid white;
+  white-space: nowrap;
+  animation: 
+    typing 3.5s steps(40, end) forwards 0.5s,
+    blink 1s step-end infinite;
+  max-width: 100%;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+  max-width: 80%;
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.contentSection {
+  margin-bottom: 3rem;
+  max-width: 80%;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  opacity: 0.95;
+}
+
+.downloadSection {
+  margin-bottom: 4rem;
+}
+
+.downloadCard {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  max-width: 80%;
+}
+
+.downloadCard:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.downloadHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.downloadTitle {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.fileInfo {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.fileType, 
+.fileSize {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.downloadDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.downloadButton {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+}
+
+.downloadButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.downloadButton::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.downloadButton:hover::after {
+  width: 100%;
+}
+
+.contactSection {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 4px;
+  margin-bottom: 4rem;
+  transition: all 0.3s ease;
+  max-width: 80%;
+}
+
+.contactSection:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sectionTitle {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.contactLink {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+}
+
+.contactLink:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Fade in animation */
+.fadeIn {
+  opacity: 1;
+  animation: fadeInAnimation 0.3s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+    max-width: 100%;
+  }
+  
+  .contentSection,
+  .downloadCard,
+  .contactSection {
+    max-width: 100%;
+  }
+  
+  .downloadHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  
+  .description,
+  .downloadDescription {
+    font-size: 1rem;
+  }
+} 

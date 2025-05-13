@@ -1,0 +1,219 @@
+/* Website Page Styles */
+.container {
+  min-height: 100vh;
+  background-color: #000;
+  color: #fff;
+  transition: opacity 0.3s ease;
+  padding: 1rem;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  position: relative;
+}
+
+.container * {
+  font-family: inherit;
+}
+
+.header {
+  font-size: 0.75rem;
+  font-weight: normal;
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.backLink {
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.backLink:hover {
+  transform: translateX(-4px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Improved typewriter effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: white; }
+}
+
+.typewriter {
+  overflow: hidden;
+  display: inline-block;
+  width: 0;
+  border-right: 3px solid white;
+  white-space: nowrap;
+  animation: 
+    typing 3.5s steps(40, end) forwards 0.5s,
+    blink 1s step-end infinite;
+  max-width: 100%;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+  max-width: 80%;
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.contentSection {
+  margin-bottom: 4rem;
+  max-width: 80%;
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  opacity: 0.95;
+}
+
+.sectionTitle {
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.techCard {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.techCard:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.techTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.techDescription {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.techLink {
+  font-size: 0.875rem;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  display: inline-block;
+}
+
+.techLink:hover {
+  transform: translateX(4px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.techLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: white;
+  transition: width 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.techLink:hover::after {
+  width: 100%;
+}
+
+.designSection {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 4px;
+  margin-bottom: 4rem;
+  transition: all 0.3s ease;
+}
+
+.designSection:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.designList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.designList li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.designList li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease;
+}
+
+.designList li:hover::before {
+  transform: translateX(4px);
+}
+
+/* Fade in animation */
+.fadeIn {
+  opacity: 1;
+  animation: fadeInAnimation 0.3s ease forwards;
+}
+
+@keyframes fadeInAnimation {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+    max-width: 100%;
+  }
+  
+  .contentSection,
+  .techGrid {
+    max-width: 100%;
+  }
+  
+  .techGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+} 
