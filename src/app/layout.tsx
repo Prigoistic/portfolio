@@ -18,6 +18,18 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Portfolio | Priyam Ghosh",
   description: "Personal portfolio and work showcase",
+  icons: {
+    icon: [
+      {
+        url: '/prigo.png',
+        href: '/prigo.png',
+      }
+    ],
+    apple: {
+      url: '/prigo.png',
+      href: '/prigo.png',
+    }
+  }
 };
 
 export default function RootLayout({
