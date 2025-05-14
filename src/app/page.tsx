@@ -47,7 +47,7 @@ export default function Home() {
   const [contentVisible, setContentVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const fullText = "Priyam Ghosh";
-  const typingSpeed = 150; // milliseconds
+  const typingSpeed = 220; // milliseconds - slower to match the much larger font
   
   // Create refs for all grid cards for animations
   const refs = Array(6).fill(0).map(() => createRef<HTMLDivElement>());

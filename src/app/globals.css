@@ -160,27 +160,44 @@ a {
   justify-content: center;
   background-color: var(--background);
   z-index: 100;
+  padding: 0 30px;
 }
 
 .name-container {
   position: relative;
   display: inline-block;
+  margin: 0 auto;
+  max-width: 100%;
+  text-align: center;
 }
 
 .name-container h1 {
-  font-size: 48px;
+  font-size: 115px;
   font-weight: 700;
   color: var(--foreground);
   margin: 0;
   padding: 0;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
+  animation: scaleIn 0.5s ease-out forwards;
+  transform-origin: center center;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.94);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .animated-cursor {
   position: absolute;
-  right: -12px;
+  right: -22px;
   top: 10%;
-  width: 3px;
+  width: 7px;
   height: 80%;
   background-color: var(--foreground);
   animation: blink 0.8s step-end infinite;
@@ -193,19 +210,28 @@ a {
 
 /* Mobile name intro adjustments */
 @media (max-width: 768px) {
+  .name-intro {
+    padding: 0 20px;
+  }
+  
+  .name-container {
+    width: 100%;
+    max-width: 95%;
+  }
+  
   .name-container h1 {
-    font-size: 36px;
+    font-size: 86px;
   }
   
   .animated-cursor {
-    right: -8px;
-    width: 2px;
+    right: -18px;
+    width: 6px;
   }
 }
 
 @media (max-width: 480px) {
   .name-container h1 {
-    font-size: 28px;
+    font-size: 66px;
   }
 }
 
