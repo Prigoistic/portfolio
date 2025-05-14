@@ -177,23 +177,42 @@ const Dock = ({
 }: DockProps) => {
   const mouseX = useMotionValue(Infinity);
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Use layout effect for faster DOM updates
   useEffect(() => {
     // Set body padding immediately to prevent content jump
-    document.body.style.paddingBottom = "210px";
+    document.body.style.paddingBottom = isMobile ? "100px" : "210px";
+    document.body.classList.add("has-dock");
     
     // Set mounted state immediately to avoid unnecessary delay
     setMounted(true);
     
     return () => {
       document.body.style.paddingBottom = "";
+      document.body.classList.remove("has-dock");
     };
-  }, []);
+  }, [isMobile]);
+
+  // Adjust dock based on mobile or desktop
+  const adjustedBaseItemSize = isMobile ? 36 : baseItemSize;
+  const adjustedMagnification = isMobile ? 44 : magnification;
+  const adjustedPanelHeight = isMobile ? 50 : panelHeight;
 
   // Return placeholder if not mounted
   if (!mounted) {
-    return <DockPlaceholder height={210} />;
+    return <DockPlaceholder height={isMobile ? 100 : 210} />;
   }
   
   // Static dock element - less animations for better performance
@@ -205,11 +224,11 @@ const Dock = ({
         right: 0,
         bottom: 0,
         width: "100%",
-        height: "210px",
+        height: isMobile ? "100px" : "210px",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-end",
-        padding: "0 0 35px 0",
+        padding: `0 0 ${isMobile ? "15px" : "35px"} 0`,
         pointerEvents: "none",
         zIndex: 100000,
       }}
@@ -228,12 +247,12 @@ const Dock = ({
           onMouseLeave={() => mouseX.set(Infinity)}
           className={`dock-panel ${className || ""}`}
           style={{
-            height: panelHeight,
+            height: adjustedPanelHeight,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: "12px",
-            padding: "8px 16px",
+            gap: isMobile ? "4px" : "12px",
+            padding: isMobile ? "4px" : "8px 16px",
             borderRadius: "18.9px",
             backgroundColor: "rgba(30, 30, 30, 0.75)",
             backdropFilter: "blur(10px)",
@@ -250,8 +269,8 @@ const Dock = ({
               key={index}
               item={item}
               mouseX={mouseX}
-              baseItemSize={baseItemSize}
-              magnification={magnification}
+              baseItemSize={adjustedBaseItemSize}
+              magnification={adjustedMagnification}
               distance={distance}
               springConfig={spring}
             />

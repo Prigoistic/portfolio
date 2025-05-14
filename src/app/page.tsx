@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState, createRef, memo, useRef } from "react";
+import { useEffect, useState, createRef, memo } from "react";
 import TransitionLink from "../components/TransitionLink";
-import { useTransition } from '../context/TransitionContext';
 
 // Memoized icon components for better performance
 const HomeIcon = memo(() => (
@@ -44,55 +43,58 @@ BuilderIcon.displayName = 'BuilderIcon';
 
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
-  const [contentVisible, setContentVisible] = useState(false);
-  const yourName = "priyam ghosh";
-  const [refs] = useState(() => 
-    Array(6).fill(0).map(() => createRef<HTMLDivElement>())
-  );
   const [displayedText, setDisplayedText] = useState('');
-  const fullTextRef = useRef(yourName);
-  const indexRef = useRef(0);
+  const [contentVisible, setContentVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const fullText = "Priyam Ghosh";
+  const typingSpeed = 150; // milliseconds
   
-  // Get transition method from context
-  const { } = useTransition();
+  // Create refs for all grid cards for animations
+  const refs = Array(6).fill(0).map(() => createRef<HTMLDivElement>());
 
+  // Check if we're on mobile
   useEffect(() => {
-    if (showIntro) {
-      const typingInterval = setInterval(() => {
-        if (indexRef.current < fullTextRef.current.length) {
-          setDisplayedText(fullTextRef.current.substring(0, indexRef.current + 1));
-          indexRef.current += 1;
-        } else {
-          clearInterval(typingInterval);
-        }
-      }, 150);
-      
-      return () => clearInterval(typingInterval);
-    }
-  }, [showIntro]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowIntro(false);
-    }, 4000);
-
-    return () => clearTimeout(timer);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Typing effect
   useEffect(() => {
-    if (!showIntro) {
-      // Add a slight delay for the content to appear after intro disappears
-      const contentTimer = setTimeout(() => {
-        setContentVisible(true);
-      }, 300);
-      
-      return () => clearTimeout(contentTimer);
-    }
-  }, [showIntro]);
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayedText(fullText.substring(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        
+        // Give a small delay after typing completes before transitioning
+        setTimeout(() => {
+          setShowIntro(false);
+          
+          // Small delay before showing content to ensure a smooth transition
+          setTimeout(() => {
+            setContentVisible(true);
+          }, 100);
+        }, 800);
+      }
+    }, typingSpeed);
+    
+    return () => clearInterval(typingInterval);
+  }, []);
 
+  // Mouse move effect for grid cards
   useEffect(() => {
     if (!showIntro) {
       const handleMouseMove = (e: MouseEvent, card: HTMLDivElement) => {
+        // Skip effect on mobile devices
+        if (isMobile) return;
+        
         const rect = card.getBoundingClientRect();
         const x = ((e.clientX - rect.left) / rect.width) * 100;
         const y = ((e.clientY - rect.top) / rect.height) * 100;
@@ -118,7 +120,7 @@ export default function Home() {
         });
       };
     }
-  }, [showIntro, refs]);
+  }, [showIntro, refs, isMobile]);
 
   return (
     <>
